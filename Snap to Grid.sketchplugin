@@ -1,0 +1,34 @@
+// StickyGrid
+
+(function() {
+
+    var adjust_position = function(pos, intval) {
+        return Math.round(pos / intval) * intval;
+    }
+
+    for (var i=0; i<[selection count]; i++) {
+        var grid_interval = 25
+
+        var sel = selection[i].children()[0];
+        var path = sel.path();
+
+        var artboard_x = sel.frameInArtboard().x();
+        var artboard_y = sel.frameInArtboard().y()
+
+        var length = path.numberOfPoints();
+
+        for (i=0; i < length; i++) {
+            var curvePoint = path.pointAtIndex(i);
+            var abs_point = sel.absolutePoint(curvePoint.point());
+
+            var rel_x = adjust_position(artboard_x + abs_point.x, grid_interval) - (artboard_x + abs_point.x);
+            var rel_y = adjust_position(artboard_y + abs_point.y, grid_interval) - (artboard_y + abs_point.y);
+
+            var cg_point = sel.relativePoint(CGPointMake(abs_point.x + rel_x, abs_point.y + rel_y));
+
+            curvePoint.point = cg_point;
+            // curvePoint.setPrimitivePoint(cg_point);
+        }
+    }
+
+})();
