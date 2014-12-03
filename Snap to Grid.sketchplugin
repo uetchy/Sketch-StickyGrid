@@ -2,33 +2,62 @@
 
 (function() {
 
-    var adjust_position = function(pos, intval) {
-        return Math.round(pos / intval) * intval;
+  var app = [NSApplication sharedApplication];
+  var grid_interval = doc.grid().gridSize();
+
+  var compute_position = function(pos, intval) {
+    return Math.round(pos / intval) * intval;
+  };
+
+  var adjust_points = function(shape_layer) {
+    var path = shape_layer.path();
+    var points_count = path.numberOfPoints();
+    var artboard_frame = shape_layer.frameInArtboard()
+
+    for (var j=0; j < points_count; j++) {
+      var point = path.pointAtIndex(j);
+
+      var abs_point = shape_layer.absolutePoint(point.point());
+
+      var rel_x = compute_position(
+        artboard_frame.x() + abs_point.x,
+        grid_interval) - (artboard_frame.x() + abs_point.x);
+
+      var rel_y = compute_position(
+        artboard_frame.y() + abs_point.y,
+        grid_interval) - (artboard_frame.y() + abs_point.y);
+
+      var cg_point = shape_layer.relativePoint(
+        CGPointMake(
+          abs_point.x + rel_x,
+          abs_point.y + rel_y
+        ));
+
+      point.movePointTo(cg_point);
     }
 
-    for (var i=0; i<[selection count]; i++) {
-        var grid_interval = 25
+    shape_layer.adjustFrameAfterEdit();
+  }
 
-        var sel = selection[i].children()[0];
-        var path = sel.path();
+  for (var i=0; i < [selection count]; i++) {
+    var object = [selection objectAtIndex: i];
 
-        var artboard_x = sel.frameInArtboard().x();
-        var artboard_y = sel.frameInArtboard().y()
+    if ([object isKindOfClass:[MSShapePathLayer class]]) {
+      // MSShapeGroup
+      adjust_points(object);
+    } else if ([object isMemberOfClass:[MSLayerGroup class]]) {
+      // MSLayerGroup
+      for (var l=0; l < [[object layers] count]; l++) {
+        var shape_layer_group = [[object layers] objectAtIndex:l];
 
-        var length = path.numberOfPoints();
-
-        for (i=0; i < length; i++) {
-            var curvePoint = path.pointAtIndex(i);
-            var abs_point = sel.absolutePoint(curvePoint.point());
-
-            var rel_x = adjust_position(artboard_x + abs_point.x, grid_interval) - (artboard_x + abs_point.x);
-            var rel_y = adjust_position(artboard_y + abs_point.y, grid_interval) - (artboard_y + abs_point.y);
-
-            var cg_point = sel.relativePoint(CGPointMake(abs_point.x + rel_x, abs_point.y + rel_y));
-
-            curvePoint.point = cg_point;
-            // curvePoint.setPrimitivePoint(cg_point);
-        }
+        for (var l2=0; l2 < [[shape_layer_group layers] count]; l2++)
+          adjust_points([[shape_layer_group layers] objectAtIndex:l2]);
+      }
+    } else {
+      // MSShapePathLayer
+      for (var l=0; l < [[object layers] count]; l++)
+        adjust_points([[object layers] objectAtIndex:l]);
     }
+  }
 
 })();
