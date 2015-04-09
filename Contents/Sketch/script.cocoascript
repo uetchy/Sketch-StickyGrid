@@ -1,6 +1,4 @@
-// Snap to Grid (ctrl cmd g)
-
-(function() {
+var onRun = function(context) {
 
   var app = [NSApplication sharedApplication];
   var grid_interval = doc.grid().gridSize();
@@ -60,4 +58,4 @@
     }
   }
 
-})();
+};
