@@ -1,0 +1,62 @@
+function computePosition(pos, intval) {
+  return Math.round(pos / intval) * intval;
+}
+
+function adjustPointsTo(shapeLayer, gridInterval) {
+  var path = shapeLayer.path();
+  var pointsCount = path.numberOfPoints();
+  var artboardFrame = shapeLayer.frameInArtboard();
+
+  for (var j=0; j < pointsCount; j++) {
+    var point = path.pointAtIndex(j);
+
+    var absolutePoint = shapeLayer.absolutePoint(point.point());
+
+    var relX = computePosition(
+      artboardFrame.origin.x + absolutePoint.x,
+      gridInterval) - (artboardFrame.origin.x + absolutePoint.x
+    );
+
+    var relY = computePosition(
+      artboardFrame.origin.y + absolutePoint.y,
+      gridInterval) - (artboardFrame.origin.y + absolutePoint.y);
+
+    var cgPoint = shapeLayer.relativePoint(
+      CGPointMake(
+        absolutePoint.x + relX,
+        absolutePoint.y + relY
+      ));
+
+    point.movePointTo(cgPoint);
+  }
+
+  shapeLayer.adjustFrameAfterEdit();
+}
+
+function snapToGrid(context) {
+  var app = [NSApplication sharedApplication];
+  var doc = context.document;
+  var selection = context.selection;
+  var gridInterval = doc.grid().gridSize();
+
+  for (var i=0; i < [selection count]; i++) {
+    var object = [selection objectAtIndex: i];
+
+    if ([object isKindOfClass:[MSShapePathLayer class]]) {
+      // MSShapeGroup
+      adjustPointsTo(object, gridInterval);
+    } else if ([object isMemberOfClass:[MSLayerGroup class]]) {
+      // MSLayerGroup
+      for (var l=0; l < [[object layers] count]; l++) {
+        var shapeLayerGroup = [[object layers] objectAtIndex:l];
+
+        for (var l2=0; l2 < [[shapeLayerGroup layers] count]; l2++)
+          adjustPointsTo([[shapeLayerGroup layers] objectAtIndex:l2], gridInterval);
+      }
+    } else {
+      // MSShapePathLayer
+      for (var l=0; l < [[object layers] count]; l++)
+        adjustPointsTo([[object layers] objectAtIndex:l], gridInterval);
+    }
+  }
+}
