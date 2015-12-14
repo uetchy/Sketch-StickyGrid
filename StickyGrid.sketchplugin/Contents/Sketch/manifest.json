@@ -3,7 +3,7 @@
   "commands": [
     {
       "script": "script.cocoascript",
-      "handler": "onRun",
+      "handler": "snapToGrid",
       "shortcut": "ctrl cmd g",
       "name": "Snap to Grid",
       "identifier": "snaptogrid"
