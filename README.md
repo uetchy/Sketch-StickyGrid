@@ -2,7 +2,7 @@
 
 Sketch plugin to make paths be snapped to grid.
 
-![](https://raw.githubusercontent.com/uetchy/Sketch-StickyGrid/master/Contents/Resources/readme_images/stickygrid.gif)
+![](https://randompaper.co/post/2014-12-03-sketch-plugin-stickygrid/stickygrid.gif)
 
 ## Installation
 
@@ -19,3 +19,5 @@ $ git clone https://github.com/uetchy/Sketch-StickyGrid.git
 ## Usage
 
 ### Snap to Grid `ctrl` + `⌘` + `G`
+
+![](https://randompaper.co/post/2014-12-03-sketch-plugin-stickygrid/stickygrid_2.gif)
