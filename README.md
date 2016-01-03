@@ -12,7 +12,7 @@ Sketch plugin to make paths be snapped to grid.
 If you prefer CLI-way:
 
 ```
-$ cd $HOME/Library/Application Support/com.bohemiancoding.sketch3/Plugins
+$ cd "$HOME/Library/Application Support/com.bohemiancoding.sketch3/Plugins"
 $ git clone https://github.com/uetchy/Sketch-StickyGrid.git
 ```
 
