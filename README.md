@@ -1,5 +1,7 @@
 # StickyGrid
 
+[![Join the chat at https://gitter.im/uetchy/Sketch-StickyGrid](https://badges.gitter.im/uetchy/Sketch-StickyGrid.svg)](https://gitter.im/uetchy/Sketch-StickyGrid?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Sketch plugin to make paths be snapped to grid.
 
 ![](http://randompaper.co.s3.amazonaws.com/Sketch-StickyGrid/stickygrid.gif)
