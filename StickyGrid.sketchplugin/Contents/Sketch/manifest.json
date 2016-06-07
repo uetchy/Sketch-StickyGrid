@@ -6,15 +6,22 @@
     "shortcut": "ctrl cmd g",
     "name": "Snap to Grid",
     "identifier": "snaptogrid"
+  }, {
+    "script": "script.cocoascript",
+    "handler": "snapToPixelGrid",
+    "shortcut": "ctrl cmd x",
+    "name": "Snap to Pixel Grid",
+    "identifier": "snaptopixelgrid"
   }],
   "menu": {
     "items": [
-      "snaptogrid"
+      "snaptogrid",
+      "snaptopixelgrid"
     ],
     "title": "StickyGrid"
   },
   "identifier": "co.randompaper.sketch.stickygrid",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Sketch plugin to make paths be snapped to grid.",
   "author": "Yasuaki Uechi",
   "authorEmail": "uetchy@randompaper.co",
