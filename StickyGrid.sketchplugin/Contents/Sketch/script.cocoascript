@@ -30,7 +30,7 @@ function adjustPointsTo(shapeLayer, gridInterval) {
     point.movePointTo(cgPoint);
   }
 
-  shapeLayer.adjustFrameAfterEdit();
+  shapeLayer.adjustFrameAfterEditIntegral(false);
 }
 
 function snapToGrid(context) {
