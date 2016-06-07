@@ -1,14 +1,12 @@
 {
   "name": "StickyGrid",
-  "commands": [
-    {
-      "script": "script.cocoascript",
-      "handler": "snapToGrid",
-      "shortcut": "ctrl cmd g",
-      "name": "Snap to Grid",
-      "identifier": "snaptogrid"
-    }
-  ],
+  "commands": [{
+    "script": "script.cocoascript",
+    "handler": "snapToGrid",
+    "shortcut": "ctrl cmd g",
+    "name": "Snap to Grid",
+    "identifier": "snaptogrid"
+  }],
   "menu": {
     "items": [
       "snaptogrid"
@@ -16,7 +14,7 @@
     "title": "StickyGrid"
   },
   "identifier": "co.randompaper.sketch.stickygrid",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Sketch plugin to make paths be snapped to grid.",
   "author": "Yasuaki Uechi",
   "authorEmail": "uetchy@randompaper.co",
