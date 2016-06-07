@@ -23,3 +23,5 @@ $ git clone https://github.com/uetchy/Sketch-StickyGrid.git
 ### Snap to Grid `ctrl` + `⌘` + `G`
 
 ![](http://randompaper.co.s3.amazonaws.com/Sketch-StickyGrid/stickygrid_2.gif)
+
+### Snap to Pixel Grid `ctrl` + `⌘` + `X`
