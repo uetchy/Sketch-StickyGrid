@@ -37,7 +37,7 @@ function snapToGrid(context) {
   var app = [NSApplication sharedApplication];
   var doc = context.document;
   var selection = context.selection;
-  var gridInterval = doc.grid().gridSize();
+  var gridInterval = MSDefaultGrid.defaultGrid().gridSize();;
 
   for (var i=0; i < [selection count]; i++) {
     var object = [selection objectAtIndex: i];
