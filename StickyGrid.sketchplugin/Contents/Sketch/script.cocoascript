@@ -1,7 +1,8 @@
-function computePosition(pos, intval) {
-  return Math.round(pos / intval) * intval;
+function computePosition(pos, gridInterval) {
+  return Math.round(pos / gridInterval) * gridInterval;
 }
 
+// Adjust point's coords of shape layers to grid
 function adjustPointsOf(shapeLayer, gridInterval) {
   var path = shapeLayer.path();
   var pointsCount = path.numberOfPoints();
@@ -31,37 +32,33 @@ function adjustPointsOf(shapeLayer, gridInterval) {
 }
 
 function adjustSelection(selection, gridInterval) {
-  for (var i=0; i < [selection count]; i++) {
-    var object = [selection objectAtIndex: i];
+  for (var i = 0; i < selection.count(); i++) {
+    var object = selection.objectAtIndex(i);
 
-    if ([object isKindOfClass:[MSShapePathLayer class]]) {
+    if (object.isKindOfClass(MSShapePathLayer.class())) {
       // MSShapeGroup
       adjustPointsOf(object, gridInterval);
-    } else if ([object isMemberOfClass:[MSLayerGroup class]]) {
+    } else if (object.isMemberOfClass(MSLayerGroup.class())) {
       // MSLayerGroup
-      for (var l=0; l < [[object layers] count]; l++) {
-        var shapeLayerGroup = [[object layers] objectAtIndex:l];
+      for (var l = 0; l < object.layers().count(); l++) {
+        var shapeLayerGroup = object.layers().objectAtIndex(l);
 
-        for (var l2=0; l2 < [[shapeLayerGroup layers] count]; l2++)
-          adjustPointsOf([[shapeLayerGroup layers] objectAtIndex:l2], gridInterval);
+        for (var l2 = 0; l2 < shapeLayerGroup.layers().count(); l2++)
+          adjustPointsOf(shapeLayerGroup.layers().objectAtIndex(l2), gridInterval);
       }
     } else {
       // MSShapePathLayer
-      for (var l=0; l < [[object layers] count]; l++)
-        adjustPointsOf([[object layers] objectAtIndex:l], gridInterval);
+      for (var l = 0; l < object.layers().count(); l++)
+        adjustPointsOf(object.layers().objectAtIndex(l), gridInterval);
     }
   }
 }
 
 function snapToGrid(context) {
-  var selection = context.selection;
   var gridInterval = MSDefaultGrid.defaultGrid().gridSize();
-
-  adjustSelection(selection, gridInterval);
+  adjustSelection(context.selection, gridInterval);
 }
 
 function snapToPixelGrid(context) {
-  var selection = context.selection;
-
-  adjustSelection(selection, 1.0);
+  adjustSelection(context.selection, 1.0);
 }
