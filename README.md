@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/uetchy/Sketch-StickyGrid](https://badges.gitter.im/uetchy/Sketch-StickyGrid.svg)](https://gitter.im/uetchy/Sketch-StickyGrid?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Sketch plugin to make paths be snapped to grid.
+Sketch plugin to make paths be snapped to Grid and/or Pixel Grid.
 
 ![](http://randompaper.co.s3.amazonaws.com/Sketch-StickyGrid/stickygrid.gif)
 
@@ -25,3 +25,7 @@ $ git clone https://github.com/uetchy/Sketch-StickyGrid.git
 ![](http://randompaper.co.s3.amazonaws.com/Sketch-StickyGrid/stickygrid_2.gif)
 
 ### Snap to Pixel Grid `ctrl` + `⌘` + `X`
+
+## More information
+
+See official document [Sketch - Pixel Precision](https://www.sketchapp.com/learn/documentation/13-other/5-pixel-precision.html).
