@@ -5,18 +5,18 @@
     "handler": "snapToGrid",
     "shortcut": "ctrl cmd g",
     "name": "Snap to Grid",
-    "identifier": "snaptogrid"
+    "identifier": "snapToGrid"
   }, {
     "script": "script.cocoascript",
     "handler": "snapToPixelGrid",
     "shortcut": "ctrl cmd x",
     "name": "Snap to Pixel Grid",
-    "identifier": "snaptopixelgrid"
+    "identifier": "snapToPixelGrid"
   }],
   "menu": {
     "items": [
-      "snaptogrid",
-      "snaptopixelgrid"
+      "snapToGrid",
+      "snapToPixelGrid"
     ],
     "title": "StickyGrid"
   },
