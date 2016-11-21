@@ -29,3 +29,25 @@ $ git clone https://github.com/uetchy/Sketch-StickyGrid.git
 ## More information
 
 See official document [Sketch - Pixel Precision](https://www.sketchapp.com/learn/documentation/13-other/5-pixel-precision.html).
+
+## Contributing
+
+### Debugging
+
+#### Dump classes
+
+```
+class-dump /Applications/Sketch.app > sketch.dump
+```
+
+#### Log
+
+```js
+log(something.treeAsDictionary());
+```
+
+to see:
+
+```
+tail -f /var/log/system.log
+```
