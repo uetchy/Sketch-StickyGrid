@@ -1,13 +1,13 @@
 {
   "name": "StickyGrid",
   "commands": [{
-    "script": "script.cocoascript",
+    "script": "script.js",
     "handler": "snapToGrid",
     "shortcut": "ctrl cmd g",
     "name": "Snap to Grid",
     "identifier": "snapToGrid"
   }, {
-    "script": "script.cocoascript",
+    "script": "script.js",
     "handler": "snapToPixelGrid",
     "shortcut": "ctrl cmd x",
     "name": "Snap to Pixel Grid",
