@@ -4,7 +4,7 @@
 
 Sketch plugin to make paths be snapped to Grid and/or Pixel Grid.
 
-![](http://randompaper.co.s3.amazonaws.com/Sketch-StickyGrid/stickygrid.gif)
+![](http://uechi-public.s3.amazonaws.com/github/sketch-stickygrid.png)
 
 ## Installation
 
@@ -21,8 +21,6 @@ $ git clone https://github.com/uetchy/Sketch-StickyGrid.git
 ## Usage
 
 ### Snap to Grid `ctrl` + `⌘` + `G`
-
-![](http://randompaper.co.s3.amazonaws.com/Sketch-StickyGrid/stickygrid_2.gif)
 
 ### Snap to Pixel Grid `ctrl` + `⌘` + `X`
 
